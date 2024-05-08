@@ -8,6 +8,7 @@
 <:type rdfs:range Type >
 <:co_authored rdfs:domain :Author>
 <:co_authored rdfs:range :Publication>
+<:co_authored>
 <:authored rdfs:domain :Author>
 <:authored rdfs:range :Publication>
 <:title rdfs:domain :Publication>
@@ -18,10 +19,10 @@
 <:abstract rdfs:range :Abstract>
 <:cited rdfs:range :Publication>
 <:cited rdfs:domain :Publication>
-<:review_sent rdfs:range :Review>
-<:review _sent rdfs:domain :Author>
-<:review_applied rdfs:range :Publication>
-<:review _applied rdfs:domain :Review>
+<:belongs_to rdfs:range :Author>
+<:belongs_to rdfs:domain :reviews>
+<:is_about rdfs:range :Publication>
+<:is_about_applied rdfs:domain :reviews>
 <:content rdfs:range :Content>
 <:content rdfs:domain :Review>
 <:decision rdfs:range Decision>
@@ -39,5 +40,5 @@
 <:name_Publisher rdfs:domain :Publisher>
 <:name_Publisher rdfs:range :Name_Publisher>
 <:type_Publisher rdfs:domain :Publisher>
-<:type_Publisher rdfs:range Type_Publisher >
+<:type_Publisher rdfs:range Type_Publisher>
 
