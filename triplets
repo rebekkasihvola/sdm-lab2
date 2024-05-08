@@ -1,0 +1,43 @@
+<:name_Author rdfs:domain :Author>
+<:name_Author rdfs:range :Name_Author>
+<:works_at rdfs:domain :Author>
+<:works_at rdfs:range :Affiliation>
+<:name_Affiliation rdfs:domain :Affiliation>
+<:name_Affiliation rdfs:range :Name_Affiliation>
+<:type rdfs:domain :Affiliation>
+<:type rdfs:range Type >
+<:co_authored rdfs:domain :Author>
+<:co_authored rdfs:range :Publication>
+<:authored rdfs:domain :Author>
+<:authored rdfs:range :Publication>
+<:title rdfs:domain :Publication>
+<:title rdfs:range :Title>
+<:year rdfs:domain :Publication>
+<:year rdfs:range :Year>
+<:abstract rdfs:domain :Publication>
+<:abstract rdfs:range :Abstract>
+<:cited rdfs:range :Publication>
+<:cited rdfs:domain :Publication>
+<:review_sent rdfs:range :Review>
+<:review _sent rdfs:domain :Author>
+<:review_applied rdfs:range :Publication>
+<:review _applied rdfs:domain :Review>
+<:content rdfs:range :Content>
+<:content rdfs:domain :Review>
+<:decision rdfs:range Decision>
+<:decision rdfs:domain :Review>
+<:tagged rdfs:domain :Keyword>
+<:tagged rdfs:range :Publication>
+<:name_Keyword rdfs:domain :Keyword>
+<:name_Keyword rdfs:range :Name_Keyword>
+<:type_Edition rdfs:domain :Edition>
+<:type_Edition rdfs:range Type_Edition>
+<:date rdfs:domain :Edition>
+<:date rdfs:range :Date>
+<:organized rdfs:domain :Publisher>
+<:organized rdfs:range :Edition>
+<:name_Publisher rdfs:domain :Publisher>
+<:name_Publisher rdfs:range :Name_Publisher>
+<:type_Publisher rdfs:domain :Publisher>
+<:type_Publisher rdfs:range Type_Publisher >
+
