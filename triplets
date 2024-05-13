@@ -10,21 +10,17 @@
 <:company rdfs:range :Company>
 <:corresponding_author rdfs:domain :Author>
 <:corresponding_author rdfs:range :Paper>
-#not sure about this
 <:corresponding_author rdfs:subProperty :Author>
-
 <:author rdfs:domain :Author>
 <:author rdfs:range :Paper>
-<:name_author rdfs:domain :Author>
-<:name_author rdfs:range :Name_Author>
 <:title rdfs:domain :Paper>
 <:title rdfs:range :Title>
 <:year rdfs:domain :Paper>
 <:year rdfs:range :Year>
 <:abstract rdfs:domain :Paper>
 <:abstract rdfs:range :Abstract>
-<:cited rdfs:range :Paper>
-<:cited rdfs:domain :Paper>
+<:cites rdfs:range :Paper>
+<:cites rdfs:domain :Paper>
 <:created_by rdfs:range :Author>
 <:created_by rdfs:domain :Review>
 <:applied_to rdfs:range :Paper>
@@ -37,17 +33,18 @@
 <:tagged rdfs:range :Paper>
 <:name_Keyword rdfs:domain :Keyword>
 <:name_Keyword rdfs:range :Name_Keyword>
-
 <:published_proceeding_conference rdfs:domain :Paper>
 <:published_proceeding_conference rdfs:range :Edition>
+<:city_Conference rdfs:domain :Edition>
+<:city_Conference rdfs:range :City>
 <:date_Conference rdfs:domain :Edition>
 <:date_Conference rdfs:range :Date_Conference>
-<:city rdfs:domain :Edition>
-<:city rdfs:range :City>
 <:conference rdfs:domain :Edition>
 <:conference rdfs:range Conference>
 <:published_proceeding_workshop rdfs:domain :Paper>
 <:published_proceeding_workshop rdfs:range :Edition>
+<:city_Workshop rdfs:domain :Edition>
+<:city_Workshop rdfs:range :City>
 <:date_Workshop rdfs:domain :Edition>
 <:date_Workshop rdfs:range :Date_Workshop>
 <:workshop rdfs:domain :Edition>
