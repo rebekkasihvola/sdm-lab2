@@ -11,7 +11,7 @@
 <:corresponding_author rdfs:domain :Author>
 <:corresponding_author rdfs:range :Paper>
 #not sure about this
-<:corresponding_author rdfs:subProperty :>
+<:corresponding_author rdfs:subProperty :Author>
 
 <:author rdfs:domain :Author>
 <:author rdfs:range :Paper>
