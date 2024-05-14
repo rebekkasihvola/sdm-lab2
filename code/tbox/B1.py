@@ -1,3 +1,5 @@
+import os
+
 from rdflib import Graph, Namespace, RDF, RDFS, XSD, Literal
 
 graph = Graph()
@@ -285,5 +287,4 @@ graph.add((lab2.workshop, RDFS.range, XSD.string))
 graph.add((lab2.workshop, RDFS.label, Literal("workshop")))
 
 
-
-print(graph.serialize('data/tbox.ttl',format="ttl"))
+print(graph.serialize('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/tbox.ttl',format="ttl"))

@@ -37,8 +37,8 @@ lab2 = Namespace("http://sdmlab2.org")
 graph.bind('lab2', lab2)
 
 #Author properties
-#Author -- [name_author] --> String
-graph.add((lab2.Author, lab2.name_author, XSD.string))
+#Author -- [name_author] --> Name_Author
+graph.add((lab2.Author, lab2.name_author, lab2.Name_Author))
 for x in range(len(authorsData[0])):
  graph.add((URIRef(lab2+authorsData[0][x]), lab2.name_author, Literal(authorsData[1][x])))
 
@@ -63,24 +63,24 @@ for x in range(len(companies_authorsData[0])):
  graph.add((URIRef(lab2+companies_authorsData[1][x]), lab2.company, lab2+companies_authorsData[0][x])))
  
 #University properties
-#University -- [name_university] --> String
+#University -- [name_university] --> Name_University
 graph.add((lab2.University, lab2.name_university, XSD.string))
 for x in range(len(universitiesData[0])):
  graph.add((URIRef(lab2+universitiesData[0][x]), lab2.name_university, Literal(universitiesData[1][x])))
 
 #Company properties
-#Company -- [name_company] --> String
+#Company -- [name_company] --> Name_Company
 graph.add((lab2.Company, lab2.name_company, XSD.string))
 for x in range(len(companiesData[0])):
  graph.add((URIRef(lab2+companiesData[0][x]), lab2.name_company, Literal(companiesData[1][x])))
 
 #Review properties
-#Review -- [content] --> String
+#Review -- [content] --> Content
 graph.add((lab2.Review, lab2.content, XSD.string))
 for x in range(len(reviewsData[0])):
  graph.add((URIRef(lab2+reviewsData[0][x]), lab2.content, Literal(reviewsData[3][x])))
 
-#Review -- [decision] --> String
+#Review -- [decision] --> Decision
 graph.add((lab2.Review, lab2.decision, XSD.string))
 for x in range(len(reviewsData[0])):
  graph.add((URIRef(lab2+reviewsData[0][x]), lab2.decision, Literal(reviewsData[4][x])))
@@ -96,16 +96,16 @@ for x in range(len(reviewsData[0])):
  graph.add((URIRef(lab2+reviewsData[0][x]), lab2.created_by, lab2+reviewsData[1][x]))
 
 #Paper properties
-#Paper -- [title] --> String
+#Paper -- [title] --> Title
 graph.add((lab2.Paper, lab2.title, XSD.string))
 for x in range(len(papersData[0])):
  graph.add((URIRef(lab2+papersData[0][x]), lab2.title, Literal(papersData[1][x])))
 
-#Paper -- [year] --> int
+#Paper -- [year] --> Year
 graph.add((lab2.Paper, lab2.year, XSD.int))
 for x in range(len(papersData[0])):
  graph.add((URIRef(lab2+papersData[0][x]), lab2.year, Literal(papersData[3][x])))
-#Paper -- [abstract] --> String
+#Paper -- [abstract] --> Abstract
 graph.add((lab2.Paper, lab2.abstract, XSD.string))
 for x in range(len(papersData[0])):
  graph.add((URIRef(lab2+papersData[0][x]), lab2.abstract, Literal(papersData[2][x])))
@@ -135,13 +135,13 @@ for x in range(len(keywordPaperData[0])):
  graph.add((URIRef(lab2+keywordPaperData[1][x]), lab2.keyword, lab2+keywordPaperData[0][x]))
 
 #Journal
-#Journal -- [name_journal] --> String
+#Journal -- [name_journal] --> Name_Journal
 graph.add((lab2.Journal, lab2.name_journal, XSD.string))
 for x in range(len(journalsData[0])):
  graph.add((URIRef(lab2+journalsData[0][x]), lab2.name_journal, Literal(journalsData[1][x])))
 
 #Volume
-#Volume -- [date_volume] --> Date
+#Volume -- [date_volume] --> Date_Volume
 graph.add((lab2.Volume, lab2.date_volume, XSD.date))
 for x in range(len(volumesData[0])):
  graph.add((URIRef(lab2+volumesData[0][x]), lab2.date_volume, Literal(volumesData[2][x])))
@@ -152,12 +152,12 @@ for x in range(len(journalvolumesData[0])):
  graph.add((URIRef(lab2+journalvolumesData[1][x]), lab2.journal, lab2+journalvolumesData[0][x]))
 
 #Edition
-#Edition -- [conference] --> String
-#Edition -- [city_Conference] --> String
-#Edition -- [date_Conference] --> Date
+#Edition -- [conference] --> Conference
+#Edition -- [city_Conference] --> City_Conference
+#Edition -- [date_Conference] --> Date_Conference
 
 #Keyword
-#Keyword -- [name_keyword] --> String
+#Keyword -- [name_keyword] --> Name_Keyword
 graph.add((lab2.Keyword, lab2.name_keyword, XSD.string))
 for x in range(len(keywordData[0])):
  graph.add((URIRef(lab2+keywordData[0][x]), lab2.name_keyword, Literal(keywordData[1][x])))
