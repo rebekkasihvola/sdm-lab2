@@ -4,7 +4,7 @@ from rdflib import Graph, Namespace, RDF, RDFS, XSD, Literal
 
 graph = Graph()
 
-lab2 = Namespace("http://sdmlab2.org")
+lab2 = Namespace("http://sdmlab2.org/")
 
 graph.bind('lab2', lab2)
 
@@ -116,7 +116,7 @@ graph.add((lab2.published_workshop, RDFS.domain, lab2.Paper))
 graph.add((lab2.published_workshop, RDFS.range, lab2.Edition))
 graph.add((lab2.published_workshop, RDFS.label, Literal("published_workshop")))
 
-#published_confernce
+#published_conference
 graph.add((lab2.published_conference, RDF.type, RDF.Property))
 graph.add((lab2.published_conference, RDFS.domain, lab2.Paper))
 graph.add((lab2.published_conference, RDFS.range, lab2.Edition))

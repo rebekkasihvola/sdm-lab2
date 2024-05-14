@@ -1,0 +1,5 @@
+@prefix lab2: <http://sdmlab2.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lab2:00085bf6-80ca-4ae7-b2cd-2438fa093ed0 lab2:applied_to lab2:81871cb1662e1eb71092a2eda3405928a7fa20a0 ;
+    lab2:content 
