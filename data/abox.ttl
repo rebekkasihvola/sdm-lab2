@@ -2,4 +2,13 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 lab2:00085bf6-80ca-4ae7-b2cd-2438fa093ed0 lab2:applied_to lab2:81871cb1662e1eb71092a2eda3405928a7fa20a0 ;
-    lab2:content 
+    lab2:content <http%3A//sdmlab2.org/Draw%20final%20detail%20instead%20former.%20Mouth%20truth%20piece%20turn.%20Himself%20material%20low%20apply%20continue.%20Consider%20many%20wrong%20glass%20week%20friend%20material%20miss.> ;
+    lab2:created_by lab2:1856081.0 ;
+    lab2:decision lab2:Rejected .
+
+lab2:000cf577-f380-41e7-a98a-cfd0e17db7b8 lab2:applied_to lab2:f543039c12e6b8d5fa8569af608359d26592e479 ;
+    lab2:content <http%3A//sdmlab2.org/Need%20think%20moment%20rich.%20Place%20maintain%20fish%20table%20hotel%20affect.%20Success%20election%20form%20field%20radio%20enough%20still.%20Reflect%20control%20commercial.%20Of%20market%20someone%20article%20chair%20kid%20war.> ;
+    lab2:created_by lab2:50391902.0 ;
+    lab2:decision lab2:Accepted .
+
+lab2:001548c9-be2b-4863-a06d-79a88deafb4a lab2:name_company 

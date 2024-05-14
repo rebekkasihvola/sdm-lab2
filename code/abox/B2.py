@@ -5,6 +5,8 @@ import pandas as pd
 from rdflib import Namespace
 from rdflib import Literal
 
+from urllib.parse import quote
+
 #importing csv files
 authorsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/authors.csv')
 authorsPapersData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/authors_papers.csv')
@@ -88,7 +90,7 @@ for i in range(len(companiesData)):
 graph.add((lab2.Review, lab2.content, lab2.Content))
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.content, URIRef(lab2 + row.iloc[3])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.content, URIRef(quote(lab2 + row.iloc[3]))))
 
 # Review -- [decision] --> Decision
 graph.add((lab2.Review, lab2.decision, lab2.Decision))
