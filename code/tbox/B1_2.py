@@ -34,7 +34,6 @@ graph.add((lab2.Paper, RDFS.label, Literal("Paper")))
 graph.add((lab2.Author, RDF.type, RDFS.Class))
 graph.add((lab2.Author, RDFS.label, Literal("Author")))
 
-
 #Edition
 graph.add((lab2.Edition, RDF.type, RDFS.Class))
 graph.add((lab2.Edition, RDFS.label, Literal("Edition")))
@@ -104,12 +103,6 @@ graph.add((lab2.name_university, RDFS.domain, lab2.University))
 graph.add((lab2.name_university, RDFS.range, XSD.string))
 graph.add((lab2.name_university, RDFS.label, Literal("name_university")))
 
-#name_company
-graph.add((lab2.name_company, RDF.type, RDF.Property))
-graph.add((lab2.name_company, RDFS.domain, lab2.Company))
-graph.add((lab2.name_company, RDFS.range, XSD.string))
-graph.add((lab2.name_company, RDFS.label, Literal("name_company")))
-
 #title
 graph.add((lab2.title, RDF.type, RDF.Property))
 graph.add((lab2.title, RDFS.domain, lab2.Paper))
@@ -127,12 +120,6 @@ graph.add((lab2.abstract, RDF.type, RDF.Property))
 graph.add((lab2.abstract, RDFS.domain, lab2.Paper))
 graph.add((lab2.abstract, RDFS.range, XSD.string))
 graph.add((lab2.abstract, RDFS.label, Literal("abstract")))
-
-#created_by
-graph.add((lab2.created_by, RDF.type, RDF.Property))
-graph.add((lab2.created_by, RDFS.domain, lab2.Review))
-graph.add((lab2.created_by, RDFS.range, lab2.Author))
-graph.add((lab2.created_by, RDFS.label, Literal("created_by")))
 
 #applied_to
 graph.add((lab2.applied_to, RDF.type, RDF.Property))
@@ -215,10 +202,22 @@ graph.add((lab2.created_by, RDFS.domain, lab2.Review))
 graph.add((lab2.created_by, RDFS.range, lab2.Author))
 graph.add((lab2.created_by, RDFS.label, Literal("created_by")))
 
-#applied_to
-graph.add((lab2.applied_to, RDF.type, RDF.Property))
-graph.add((lab2.applied_to, RDFS.domain, lab2.Review))
-graph.add((lab2.applied_to, RDFS.range, lab2.Paper))
-graph.add((lab2.applied_to, RDFS.label, Literal("applied_to")))
+#university
+graph.add((lab2.university, RDF.type, lab2.Property))
+graph.add((lab2.university, RDFS.domain, lab2.Author))
+graph.add((lab2.university, RDFS.range, lab2.University))
+graph.add((lab2.university, RDFS.label, Literal("university")))
+
+#company
+graph.add((lab2.company, RDF.type, RDF.Property))
+graph.add((lab2.company, RDFS.domain, lab2.Author))
+graph.add((lab2.company, RDFS.range, lab2.Company))
+graph.add((lab2.company, RDFS.label, Literal("company")))
+
+#journal
+graph.add((lab2.journal, RDF.type, RDF.Property))
+graph.add((lab2.journal, RDFS.domain, lab2.Volume))
+graph.add((lab2.journal, RDFS.range, lab2.Journal))
+graph.add((lab2.journal, RDFS.label, Literal("journal")))
 
 print(graph.serialize('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/tbox2.ttl',format="ttl"))

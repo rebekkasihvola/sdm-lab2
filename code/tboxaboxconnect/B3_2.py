@@ -1,9 +1,8 @@
 import pandas as pd
-from rdflib.namespace import RDF, RDFS, FOAF, XSD, URIRef
+from rdflib.namespace import RDF, RDFS, URIRef
 from rdflib import Graph
 import pandas as pd
 from rdflib import Namespace
-from rdflib import Literal
 
 
 authorsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/authors.csv')
@@ -52,9 +51,10 @@ for i in range(len(authorsPapersData)):
 
 #Author -- [corresponding_author] --> Paper (subproperty of author)
 
-for i in range(len(mainauthorsData)):
+""" for i in range(len(mainauthorsData)):
     row = mainauthorsData.iloc[i]
-    graph.add([URIRef(lab2 + str(row.iloc[0])), RDF.type, lab2.corresponding_author])
+    graph.add([URIRef(lab2 + str(row.iloc[0])), RDFS.subPropertyOf, lab2.Paper]) """
+
 
 #Author -- [university] --> University
 

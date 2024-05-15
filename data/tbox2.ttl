@@ -55,6 +55,11 @@ lab2:city_workshop a rdf:Property ;
     rdfs:domain lab2:Edition ;
     rdfs:range xsd:string .
 
+lab2:company a rdf:Property ;
+    rdfs:label "company" ;
+    rdfs:domain lab2:Author ;
+    rdfs:range lab2:Company .
+
 lab2:conference a rdf:Property ;
     rdfs:label "conference" ;
     rdfs:domain lab2:Edition ;
@@ -94,6 +99,11 @@ lab2:decision a rdf:Property ;
     rdfs:label "decision" ;
     rdfs:domain lab2:Review ;
     rdfs:range xsd:string .
+
+lab2:journal a rdf:Property ;
+    rdfs:label "journal" ;
+    rdfs:domain lab2:Volume ;
+    rdfs:range lab2:Journal .
 
 lab2:keyword a rdf:Property ;
     rdfs:label "keyword" ;
@@ -144,6 +154,11 @@ lab2:title a rdf:Property ;
     rdfs:label "title" ;
     rdfs:domain lab2:Paper ;
     rdfs:range xsd:string .
+
+lab2:university a lab2:Property ;
+    rdfs:label "university" ;
+    rdfs:domain lab2:Author ;
+    rdfs:range lab2:University .
 
 lab2:workshop a rdf:Property ;
     rdfs:label "workshop" ;
