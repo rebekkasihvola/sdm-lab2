@@ -47,7 +47,8 @@ for i in range(len(authorsData)):
 
 for i in range(len(authorsPapersData)):
     row = authorsPapersData.iloc[i]
-    graph.add([URIRef(lab2 + str(row.iloc[0])), RDF.type, lab2.Paper])
+    #PaperID
+    graph.add([URIRef(lab2 + str(row.iloc[1])), RDF.type, lab2.Paper])
 
 #Author -- [corresponding_author] --> Paper (subproperty of author)
 
@@ -60,7 +61,8 @@ for i in range(len(authorsPapersData)):
 
 for x in range(len(universities_authorsData)):
  row = universities_authorsData.iloc[x]
- graph.add([URIRef(lab2+str(row.iloc[1])), RDF.type,lab2.University])
+ #UniversityID
+ graph.add([URIRef(lab2+str(row.iloc[0])), RDF.type,lab2.University])
  
 # Author -- [company] --> Company
 
@@ -100,12 +102,14 @@ for i in range(len(reviewsData)):
 
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
+    #PaperID
     graph.add([URIRef(lab2 + str(row.iloc[0])), RDF.type, lab2.Paper])
 
 # Review -- [created_by] --> Author
 
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
+    #AuthorID
     graph.add((URIRef(lab2 + str(row.iloc[0])), RDF.type, lab2.Author))
 
 """ # Paper properties
@@ -131,30 +135,35 @@ for i in range(len(papersData)):
 
 for i in range(len(citationsData)):
     row = citationsData.iloc[i]
+    #Paperid
     graph.add([URIRef(lab2 + str(row.iloc[0])), RDF.type, lab2.Paper])
 
 # Paper --[published_volume] --> Volume
 
 for i in range(len(volumesPapersData)):
     row = volumesPapersData.iloc[i]
+    #Volumeid
     graph.add([URIRef(lab2 + str(row.iloc[1])), RDF.type, lab2.Volume])
 
 # Paper --[published_conference] --> Edition
 
 for i in range(len(conferencesEditionsPapersData)):
     row = conferencesEditionsPapersData.iloc[i]
+    #EditionID
     graph.add([URIRef(lab2 + str(row.iloc[1])), RDF.type, lab2.Edition])
 
 # Paper --[published_workshop] --> Edition
 graph.add((lab2.Paper, lab2.published_workshop, lab2.Edition))
 for i in range(len(workshopsEditionsPapersData)):
     row = workshopsEditionsPapersData.iloc[i]
+    #EditionID
     graph.add([URIRef(lab2 + str(row.iloc[1])), RDF.type, lab2.Edition])
 
 # Paper --[keyword] --> Keyword
 graph.add((lab2.Paper, lab2.keyword, lab2.Keyword))
 for i in range(len(keywordPaperData)):
     row = keywordPaperData.iloc[i]
+    #KeywordID
     graph.add([URIRef(lab2 + str(row.iloc[1])), RDF.type, lab2.Keyword])
 
 """ # Journal
@@ -175,6 +184,7 @@ for i in range(len(volumesData)):
 
 for i in range(len(journalvolumesData)):
     row = journalvolumesData.iloc[i]
+    #JournalID
     graph.add([URIRef(lab2 + str(row.iloc[1])), RDF.type, lab2.Journal])
 
 # Edition

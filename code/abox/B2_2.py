@@ -63,7 +63,7 @@ for i in range(len(mainauthorsData)):
 graph.add((lab2.Author, lab2.university, lab2.University))
 for x in range(len(universities_authorsData)):
  row = universities_authorsData.iloc[x]
- graph.add((URIRef(lab2+str(row.iloc[1])), lab2.university, URIRef(lab2+row[0])))
+ graph.add((URIRef(lab2+str(row.iloc[1])), lab2.university, URIRef(lab2+row.iloc[0])))
  
 # Author -- [company] --> Company
 graph.add((lab2.Author, lab2.company, lab2.Company))
@@ -109,7 +109,7 @@ for i in range(len(reviewsData)):
 graph.add((lab2.Review, lab2.created_by, lab2.Author))
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.created_by, URIRef(lab2 + str(row.iloc[1]))))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.created_by, URIRef(lab2 + row.iloc[1])))
 
 # Paper properties
 # Paper -- [title] --> String
@@ -134,13 +134,13 @@ for i in range(len(papersData)):
 graph.add((lab2.Paper, lab2.cites, lab2.Paper))
 for i in range(len(citationsData)):
     row = citationsData.iloc[i]
-    graph.add([URIRef(lab2 + str(row.iloc[0])), lab2.cites, URIRef(lab2 + row.iloc[1])])
+    graph.add([URIRef(lab2 + str(row.iloc[0])), lab2.cites, URIRef(lab2 + str(row.iloc[1]))])
 
 # Paper --[published_volume] --> Volume
 graph.add((lab2.Paper, lab2.published_volume, lab2.Volume))
 for i in range(len(volumesPapersData)):
     row = volumesPapersData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[1])), lab2.published_volume, URIRef(lab2 + row.iloc[0])))
+    graph.add((URIRef(lab2 + str(row.iloc[1])), lab2.published_volume, URIRef(lab2 + str(row.iloc[0]))))
 
 # Paper --[published_conference] --> Edition
 graph.add((lab2.Paper, lab2.published_conference, lab2.Edition))
@@ -210,7 +210,7 @@ for i in range(len(workshopsData)):
 graph.add((lab2.Edition, lab2.workshop, XSD.string))
 for i in range(len(workshopsData)):
     row = workshopsData.iloc[i]
-    graph.add((URIRef(lab2 + row.iloc[0]), lab2.workshop, Literal(row.iloc[1])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.workshop, Literal(row.iloc[1])))
 
 # Edition -- [conference] --> String
 graph.add((lab2.Edition, lab2.conference, XSD.string))

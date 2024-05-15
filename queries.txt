@@ -1,0 +1,78 @@
+@prefix lab2: <http://sdmlab2.org> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#### -------------- Query 1 -------------- ####
+
+# Find all Authors
+# Assuming we want to return both authors' ids and names
+
+SELECT ?authors ?authors_name
+WHERE
+    {
+    lab2:name_author rdfs:domain ?authors .
+    lab2:name_author rdfs:range ?authors_name .
+    ?authors rdf:type rdfs:Class .
+    ?authors_name rdf:type rdfs:Class .
+    }
+
+#### -------------- Query 2 -------------- ####
+
+# Find all properties whose domain is Author
+
+SELECT ?properties
+WHERE
+    {
+    ?properties rdf:type rdfs:Property .
+    ?properties rdfs:domain lab2:Author .
+    }
+
+#### -------------- Query 3 -------------- ####
+
+# Find all properties whose domain is either Conference or Journal
+
+SELECT ?properties
+WHERE
+    {
+    lab2:Paper lab2:published_conference ?all_conferences .
+    lab2:published_conference rdfs:range ?all_conferences .
+    lab2:published_conference rdfs:domain lab2:Paper .
+    ?properties rdfs:domain ?all_conferences .
+    }
+    UNION
+    {
+    lab2:Paper lab2:published_volume ?all_volumes .
+    lab2:published_volume rdfs:domain lab2:Paper .
+    lab2:published_volume rdfs:range ?all_volumes .
+    ?all_volumes lab2:journal ?all_journals .
+    lab2:journal rdfs:domain ?all_volumes .
+    lab2:journal rdfs:range ?all_journals .
+    ?properties rdfs:domain ?all_journals .
+    }
+
+#### -------------- Query 4 -------------- ####
+
+# Find all the papers written by Di Liu that where published in database conferences
+# Assuming our author's name is Di Liu
+
+SELECT ?papers
+WHERE
+    {
+    lab2:Author lab2:name_author "Di Liu" .
+    lab2:name_author rdfs:domain lab2:Author .
+    lab2:name_author rdfs:range lab2:Name_Author .
+    lab2:Author lab2:author ?papers .
+    lab2:author rdfs:domain lab2:Author .
+    lab2:author rdfs:range ?papers .
+    ?papers lab2:keyword lab2:Keyword .
+    lab2:keyword rdfs:domain ?papers .
+    lab2:keyword rdfs:range lab2:Keyword .
+    lab2:Keyword lab2:name_keyword "database" .
+    lab2:name_keyword rdfs:domain lab2:Keyword .
+    lab2:name_keyword rdfs:range lab2:Name_Keyword .
+    ?papers lab2:published_conference ?all_conferences
+    lab2:published_conference rdfs:domain ?papers
+    lab2:published_conference rdfs:range ?all_conferences
+    }
+
