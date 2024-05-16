@@ -141,10 +141,10 @@ graph.add((lab2.decision, RDFS.label, Literal("decision")))
 
 
 #name_Keyword
-graph.add((lab2.name_Keyword, RDF.type, RDF.Property))
-graph.add((lab2.name_Keyword, RDFS.domain, lab2.Keyword))
-graph.add((lab2.name_Keyword, RDFS.range, XSD.string))
-graph.add((lab2.name_Keyword, RDFS.label, Literal("name_keyword")))
+graph.add((lab2.name_keyword, RDF.type, RDF.Property))
+graph.add((lab2.name_keyword, RDFS.domain, lab2.Keyword))
+graph.add((lab2.name_keyword, RDFS.range, XSD.string))
+graph.add((lab2.name_keyword, RDFS.label, Literal("name_keyword")))
 
 #name_journal
 graph.add((lab2.name_journal, RDF.type, RDF.Property))
@@ -186,8 +186,8 @@ graph.add((lab2.corresponding_author, RDFS.label, Literal("corresponding_author"
 
 #keyword
 graph.add((lab2.keyword, RDF.type, RDF.Property))
-graph.add((lab2.keyword, RDFS.domain, lab2.Keyword))
-graph.add((lab2.keyword, RDFS.range, lab2.Paper))
+graph.add((lab2.keyword, RDFS.domain, lab2.Paper))
+graph.add((lab2.keyword, RDFS.range, lab2.Keyword))
 graph.add((lab2.keyword, RDFS.label, Literal("keyword")))
 
 #cites

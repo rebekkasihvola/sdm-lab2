@@ -107,13 +107,8 @@ lab2:journal a rdf:Property ;
 
 lab2:keyword a rdf:Property ;
     rdfs:label "keyword" ;
-    rdfs:domain lab2:Keyword ;
-    rdfs:range lab2:Paper .
-
-lab2:name_Keyword a rdf:Property ;
-    rdfs:label "name_keyword" ;
-    rdfs:domain lab2:Keyword ;
-    rdfs:range xsd:string .
+    rdfs:domain lab2:Paper ;
+    rdfs:range lab2:Keyword .
 
 lab2:name_author a rdf:Property ;
     rdfs:label "name_author" ;
@@ -128,6 +123,11 @@ lab2:name_company a rdf:Property ;
 lab2:name_journal a rdf:Property ;
     rdfs:label "name_journal" ;
     rdfs:domain lab2:Journal ;
+    rdfs:range xsd:string .
+
+lab2:name_keyword a rdf:Property ;
+    rdfs:label "name_keyword" ;
+    rdfs:domain lab2:Keyword ;
     rdfs:range xsd:string .
 
 lab2:name_university a lab2:Property ;

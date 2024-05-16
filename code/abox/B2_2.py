@@ -103,13 +103,13 @@ for i in range(len(reviewsData)):
 graph.add((lab2.Review, lab2.applied_to, lab2.Paper))
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.applied_to, URIRef(lab2 + row.iloc[2])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.applied_to, URIRef(lab2 + str(row.iloc[2]))))
 
 # Review -- [created_by] --> Author
 graph.add((lab2.Review, lab2.created_by, lab2.Author))
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.created_by, URIRef(lab2 + row.iloc[1])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.created_by, URIRef(lab2 + str(row.iloc[1]))))
 
 # Paper properties
 # Paper -- [title] --> String
