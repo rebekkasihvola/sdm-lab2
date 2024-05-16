@@ -9,41 +9,41 @@ graph.bind('lab2', lab2)
 #9 Classes
 
 #University
-graph.add((lab2.University, RDF.type, RDFS.Class))
+""" graph.add((lab2.University, RDF.type, RDFS.Class)) """
 graph.add((lab2.University, RDFS.label, Literal("University")))
 
 #Company
-graph.add((lab2.Company, RDF.type, RDFS.Class))
+""" graph.add((lab2.Company, RDF.type, RDFS.Class)) """
 graph.add((lab2.Company, RDFS.label, Literal("Company")))
 
 #Journal
-graph.add((lab2.Journal, RDF.type, RDFS.Class))
+""" graph.add((lab2.Journal, RDF.type, RDFS.Class)) """
 graph.add((lab2.Journal, RDFS.label, Literal("Journal")))
 
 #Volume
-graph.add((lab2.Volume, RDF.type, RDFS.Class))
+""" graph.add((lab2.Volume, RDF.type, RDFS.Class)) """
 graph.add((lab2.Volume, RDFS.label, Literal("Volume")))
 
 
 #Paper
-graph.add((lab2.Paper, RDF.type, RDFS.Class))
+""" graph.add((lab2.Paper, RDF.type, RDFS.Class)) """
 graph.add((lab2.Paper, RDFS.label, Literal("Paper")))
 
 
 #Author
-graph.add((lab2.Author, RDF.type, RDFS.Class))
+""" graph.add((lab2.Author, RDF.type, RDFS.Class)) """
 graph.add((lab2.Author, RDFS.label, Literal("Author")))
 
 #Edition
-graph.add((lab2.Edition, RDF.type, RDFS.Class))
+""" graph.add((lab2.Edition, RDF.type, RDFS.Class)) """
 graph.add((lab2.Edition, RDFS.label, Literal("Edition")))
 
 #Review
-graph.add((lab2.Review, RDF.type, RDFS.Class))
+""" graph.add((lab2.Review, RDF.type, RDFS.Class)) """
 graph.add((lab2.Review, RDFS.label, Literal("Review")))
 
 #Keyword
-graph.add((lab2.Keyword, RDF.type, RDFS.Class))
+""" graph.add((lab2.Keyword, RDF.type, RDFS.Class)) """
 graph.add((lab2.Keyword, RDFS.label, Literal("Keyword")))
 
 #Properties
@@ -98,7 +98,7 @@ graph.add((lab2.name_author, RDFS.range, XSD.string))
 graph.add((lab2.name_author, RDFS.label, Literal("name_author")))
 
 #name_university
-graph.add((lab2.name_university, RDF.type, lab2.Property))
+graph.add((lab2.name_university, RDF.type, RDF.Property))
 graph.add((lab2.name_university, RDFS.domain, lab2.University))
 graph.add((lab2.name_university, RDFS.range, XSD.string))
 graph.add((lab2.name_university, RDFS.label, Literal("name_university")))
@@ -172,17 +172,18 @@ graph.add((lab2.workshop, RDFS.label, Literal("workshop")))
 
 #Edges
 
+#corresponding_author
+graph.add((lab2.corresponding_author, RDF.type, RDF.Property))
+graph.add((lab2.corresponding_author, RDFS.domain, lab2.Author))
+graph.add((lab2.corresponding_author, RDFS.range, lab2.Paper))
+graph.add((lab2.corresponding_author, RDFS.label, Literal("corresponding_author")))
+
 #author
 graph.add((lab2.author, RDF.type, RDF.Property))
-graph.add((lab2.author, RDFS.domain, lab2.Author))
+graph.add((lab2.author, RDFS.subPropertyOf, lab2.corresponding_author))
 graph.add((lab2.author, RDFS.range, lab2.Paper))
 graph.add((lab2.author, RDFS.label, Literal("author")))
 
-#corresponding_author
-graph.add((lab2.corresponding_author, RDF.type, RDF.Property))
-graph.add((lab2.corresponding_author, RDFS.subPropertyOf, lab2.author))
-graph.add((lab2.corresponding_author, RDFS.range, lab2.Paper))
-graph.add((lab2.corresponding_author, RDFS.label, Literal("corresponding_author")))
 
 #keyword
 graph.add((lab2.keyword, RDF.type, RDF.Property))
@@ -203,7 +204,7 @@ graph.add((lab2.created_by, RDFS.range, lab2.Author))
 graph.add((lab2.created_by, RDFS.label, Literal("created_by")))
 
 #university
-graph.add((lab2.university, RDF.type, lab2.Property))
+graph.add((lab2.university, RDF.type, RDF.Property))
 graph.add((lab2.university, RDFS.domain, lab2.Author))
 graph.add((lab2.university, RDFS.range, lab2.University))
 graph.add((lab2.university, RDFS.label, Literal("university")))

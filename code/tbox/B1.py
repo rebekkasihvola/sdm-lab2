@@ -135,13 +135,13 @@ graph.add((lab2.name_author, RDFS.range, lab2.Name_Author))
 graph.add((lab2.name_author, RDFS.label, Literal("name_author")))
 
 #name_university
-graph.add((lab2.name_university, RDF.type, lab2.Property))
+graph.add((lab2.name_university, RDF.type, RDF.Property))
 graph.add((lab2.name_university, RDFS.domain, lab2.University))
 graph.add((lab2.name_university, RDFS.range, lab2.Name_University))
 graph.add((lab2.name_university, RDFS.label, Literal("name_university")))
 
 #university
-graph.add((lab2.university, RDF.type, lab2.Property))
+graph.add((lab2.university, RDF.type, RDF.Property))
 graph.add((lab2.university, RDFS.domain, lab2.Author))
 graph.add((lab2.university, RDFS.range, lab2.University))
 graph.add((lab2.university, RDFS.label, Literal("university")))
@@ -236,17 +236,17 @@ graph.add((lab2.city_conference, RDFS.domain, lab2.Edition))
 graph.add((lab2.city_conference, RDFS.range, lab2.City_Conference))
 graph.add((lab2.city_conference, RDFS.label, Literal("city_conference")))
 
-#author
-graph.add((lab2.author, RDF.type, RDF.Property))
-graph.add((lab2.author, RDFS.domain, lab2.Author))
-graph.add((lab2.author, RDFS.range, lab2.Paper))
-graph.add((lab2.author, RDFS.label, Literal("author")))
-
 #corresponding_author
 graph.add((lab2.corresponding_author, RDF.type, RDF.Property))
-graph.add((lab2.corresponding_author, RDFS.subPropertyOf, lab2.author))
+graph.add((lab2.corresponding_author, RDFS.domain, lab2.Author))
 graph.add((lab2.corresponding_author, RDFS.range, lab2.Paper))
 graph.add((lab2.corresponding_author, RDFS.label, Literal("corresponding_author")))
+
+#author
+graph.add((lab2.author, RDF.type, RDF.Property))
+graph.add((lab2.author, RDFS.subPropertyOf, lab2.corresponding_author))
+graph.add((lab2.author, RDFS.range, lab2.Paper))
+graph.add((lab2.author, RDFS.label, Literal("author")))
 
 #keyword
 graph.add((lab2.keyword, RDF.type, RDF.Property))

@@ -42,9 +42,16 @@ graph.bind('lab2', lab2)
 graph.add((lab2.Author, lab2.name_author, lab2.Name_Author))
 for i in range(len(authorsData)):
     row = authorsData.iloc[i]
-    graph.add([URIRef(lab2 + str(row.iloc[0])), lab2.name_author, URIRef(lab2 + row.iloc[1])])
+    graph.add([URIRef(lab2 + str(row.iloc[0])), lab2.name_author, URIRef(lab2 + quote(row.iloc[1]))])
 
-#Author -- [author] --> Paper
+
+#Author -- [corresponding_author] --> Paper
+graph.add((lab2.Author, lab2.corresponding_author, lab2.Paper))
+for i in range(len(mainauthorsData)):
+    row = mainauthorsData.iloc[i]
+    graph.add([URIRef(lab2 + str(row.iloc[0])), lab2.corresponding_author, URIRef(lab2 + quote(row.iloc[1]))])
+
+#Author -- [author] --> Paper (subproperty of corresponding_author)
 
 graph.add((lab2.Author, lab2.author, lab2.Paper))
 for i in range(len(authorsPapersData)):
@@ -52,45 +59,39 @@ for i in range(len(authorsPapersData)):
     graph.add([URIRef(lab2 + str(row.iloc[0])), lab2.author, URIRef(lab2 + row.iloc[1])])
 
 
-#Author -- [corresponding_author] --> Paper (subproperty of author)
-graph.add((lab2.Author, lab2.corresponding_author, lab2.Paper))
-for i in range(len(mainauthorsData)):
-    row = mainauthorsData.iloc[i]
-    graph.add([URIRef(lab2 + str(row.iloc[0])), lab2.corresponding_author, URIRef(lab2 + row.iloc[1])])
-
 #Author -- [university] --> University
 graph.add((lab2.Author, lab2.university, lab2.University))
 for x in range(len(universities_authorsData)):
  row = universities_authorsData.iloc[x]
- graph.add((URIRef(lab2+str(row.iloc[1])), lab2.university, URIRef(lab2+row[0])))
+ graph.add((URIRef(lab2+str(row.iloc[1])), lab2.university, URIRef(lab2+quote(row.iloc[0]))))
  
 
 # Author -- [company] --> Company
 graph.add((lab2.Author, lab2.company, lab2.Company))
 for i in range(len(companies_authorsData)):
     row = companies_authorsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[1])), lab2.company, URIRef(lab2 + row.iloc[0])))
+    graph.add((URIRef(lab2 + str(row.iloc[1])), lab2.company, URIRef(lab2 + quote(row.iloc[0]))))
 
 # University properties
 # University -- [name_university] --> Name_University
 graph.add((lab2.University, lab2.name_university, lab2.Name_University))
 for i in range(len(universitiesData)):
     row = universitiesData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.name_university, URIRef(lab2 + row.iloc[1])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.name_university, URIRef(lab2 + quote(row.iloc[1]))))
 
 # Company properties
 # Company -- [name_company] --> Name_Company
 graph.add((lab2.Company, lab2.name_company, lab2.Name_Company))
 for i in range(len(companiesData)):
     row = companiesData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.name_company, URIRef(lab2 + row.iloc[1])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.name_company, URIRef(lab2 + quote(row.iloc[1]))))
 
 # Review properties
 # Review -- [content] --> Content
 graph.add((lab2.Review, lab2.content, lab2.Content))
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.content, URIRef(quote(lab2 + row.iloc[3]))))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.content, URIRef(lab2 + quote(row.iloc[3]))))
 
 # Review -- [decision] --> Decision
 graph.add((lab2.Review, lab2.decision, lab2.Decision))
@@ -108,14 +109,14 @@ for i in range(len(reviewsData)):
 graph.add((lab2.Review, lab2.created_by, lab2.Author))
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.created_by, URIRef(lab2 + str(row.iloc[1]))))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.created_by, URIRef(lab2 + quote(str(row.iloc[1])))))
 
 # Paper properties
 # Paper -- [title] --> Title
 graph.add((lab2.Paper, lab2.title, lab2.Title))
 for i in range(len(papersData)):
     row = papersData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.title, URIRef(lab2 + row.iloc[1])))
+    graph.add([URIRef(lab2 + str(row.iloc[0])), lab2.title, URIRef(lab2 + quote(row.iloc[1]))])
 
 # Paper -- [year] --> Year
 graph.add((lab2.Paper, lab2.year, lab2.Year))
@@ -127,7 +128,7 @@ for i in range(len(papersData)):
 graph.add((lab2.Paper, lab2.abstract, lab2.Abstract))
 for i in range(len(papersData)):
     row = papersData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.abstract, URIRef(lab2 + str(row.iloc[2]))))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.abstract, URIRef(lab2 + quote(str(row.iloc[2])))))
 
 # Paper -- [cites] --> Paper
 graph.add((lab2.Paper, lab2.cites, lab2.Paper))
@@ -157,14 +158,14 @@ for i in range(len(workshopsEditionsPapersData)):
 graph.add((lab2.Paper, lab2.keyword, lab2.Keyword))
 for i in range(len(keywordPaperData)):
     row = keywordPaperData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[1])), lab2.keyword, URIRef(lab2 + row.iloc[0])))
+    graph.add((URIRef(lab2 + str(row.iloc[1])), lab2.keyword, URIRef(lab2 + quote(row.iloc[0]))))
 
 # Journal
 # Journal -- [name_journal] --> Name_Journal
 graph.add((lab2.Journal, lab2.name_journal, lab2.Name_journal))
 for i in range(len(journalsData)):
     row = journalsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.name_journal, URIRef(lab2 + row.iloc[1])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.name_journal, URIRef(lab2 + quote(row.iloc[1]))))
 
 # Volume
 # Volume -- [date_volume] --> Date_Volume
@@ -185,7 +186,7 @@ for i in range(len(journalvolumesData)):
 graph.add((lab2.Edition, lab2.city_conference, lab2.City_Conference))
 for i in range(len(conferencesData)):
     row = conferencesData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.city_conference, URIRef(lab2 + row.iloc[3])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.city_conference, URIRef(lab2 + quote(row.iloc[3]))))
 
 # Edition -- [date_conference] --> Date_Conference
 graph.add((lab2.Edition, lab2.date_conference, lab2.Date_Conference))
@@ -203,7 +204,7 @@ for i in range(len(workshopsEditionsData)):
 graph.add((lab2.Edition, lab2.city_workshop, lab2.City_Workshop))
 for i in range(len(workshopsData)):
     row = workshopsData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.city_workshop, URIRef(lab2 + row.iloc[3])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.city_workshop, URIRef(lab2 + quote(row.iloc[3]))))
 
 # Edition -- [workshop] --> String
 graph.add((lab2.Edition, lab2.workshop, XSD.string))
@@ -222,6 +223,6 @@ for i in range(len(conferencesData)):
 graph.add((lab2.Keyword, lab2.name_keyword, lab2.Name_Keyword))
 for i in range(len(keywordData)):
     row = keywordData.iloc[i]
-    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.name_keyword, URIRef(lab2 + row.iloc[1])))
+    graph.add((URIRef(lab2 + str(row.iloc[0])), lab2.name_keyword, URIRef(lab2 + quote(row.iloc[1]))))
 
 graph.serialize('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/abox.ttl',format = 'ttl')
