@@ -12,11 +12,12 @@ from urllib.parse import quote
 authorsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/authors.csv')
 authorsPapersData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/authors_papers.csv')
 mainauthorsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/main_authors.csv')
-conferencesData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/conferences.csv')
+coauthorsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/coauthors.csv')
+conferencesData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/Conferences_editions2.csv')
 conferencesEditionsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/conferences_editions_data.csv')
 conferencesEditionsPapersData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/conferencesEditions_papers.csv')
-workshopsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/workshops.csv')
-workshopsEditionsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/workshops_editions_data.csv')
+workshopsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/Workshops_editions2.csv')
+workshopsEditionsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/Workshops_editions_data.csv')
 workshopsEditionsPapersData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/workshopEditions_papers.csv')
 journalsData= pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/journals.csv')
 journalvolumesData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/journals_volumes.csv')
@@ -47,17 +48,17 @@ for i in range(len(authorsData)):
     row = authorsData.iloc[i]
     graph.add([URIRef(lab2 + "Author"+str(row.iloc[0])), lab2.name_author, Literal(row.iloc[1])])
 
-#Author -- [corresponding_author] --> Paper
+#Author -- [corresponding_author] --> Paper (subproperty of author)
 graph.add((lab2.Author, lab2.corresponding_author, lab2.Paper))
 for i in range(len(mainauthorsData)):
     row = mainauthorsData.iloc[i]
     graph.add([URIRef(lab2 +"Author"+str(row.iloc[0])), lab2.corresponding_author, URIRef(lab2 +"Paper"+row.iloc[1])])
 
-#Author -- [author] --> Paper (subproperty of corresponding_author)
+#Author -- [author] --> Paper 
 
 graph.add((lab2.Author, lab2.author, lab2.Paper))
-for i in range(len(authorsPapersData)):
-    row = authorsPapersData.iloc[i]
+for i in range(len(coauthorsData)):
+    row = coauthorsData.iloc[i]
     graph.add([URIRef(lab2 +"Author"+str(row.iloc[0])), lab2.author, URIRef(lab2 +"Paper"+row.iloc[1])])
 
 
@@ -144,17 +145,19 @@ for i in range(len(volumesPapersData)):
     row = volumesPapersData.iloc[i]
     graph.add((URIRef(lab2 + "Paper"+str(row.iloc[1])), lab2.published_volume, URIRef(lab2 +"Volume"+ str(row.iloc[0]))))
 
+#CHANGE THE DATA HERE
 # Paper --[published_conference] --> Edition
 graph.add((lab2.Paper, lab2.published_conference, lab2.Edition))
 for i in range(len(conferencesEditionsPapersData)):
     row = conferencesEditionsPapersData.iloc[i]
     graph.add((URIRef(lab2 + "Paper"+str(row.iloc[1])), lab2.published_conference, URIRef(lab2+"Edition" + row.iloc[0])))
 
+#CHANGE THE DATA HERE
 # Paper --[published_workshop] --> Edition
 graph.add((lab2.Paper, lab2.published_workshop, lab2.Edition))
 for i in range(len(workshopsEditionsPapersData)):
     row = workshopsEditionsPapersData.iloc[i]
-    graph.add((URIRef(lab2 + "Paper"+str(row.iloc[1])), lab2.published_conference, URIRef(lab2 +"Edition"+ row.iloc[0])))
+    graph.add((URIRef(lab2 + "Paper"+str(row.iloc[1])), lab2.published_workshop, URIRef(lab2 +"Edition"+ row.iloc[0])))
 
 # Paper --[keyword] --> Keyword
 graph.add((lab2.Paper, lab2.keyword, lab2.Keyword))
@@ -188,7 +191,7 @@ for i in range(len(journalvolumesData)):
 graph.add((lab2.Edition, lab2.city_conference, XSD.string))
 for i in range(len(conferencesData)):
     row = conferencesData.iloc[i]
-    graph.add((URIRef(lab2 + "Edition"+str(row.iloc[0])), lab2.city_conference, Literal(row.iloc[3])))
+    graph.add((URIRef(lab2 + "Edition"+str(row.iloc[1])), lab2.city_conference, Literal(row.iloc[3])))
 
 # Edition -- [date_conference] --> Date
 graph.add((lab2.Edition, lab2.date_conference, XSD.date))
@@ -196,6 +199,7 @@ for i in range(len(conferencesEditionsData)):
     row = conferencesEditionsData.iloc[i]
     graph.add((URIRef(lab2 + "Edition"+str(row.iloc[0])), lab2.date_conference,  Literal(row.iloc[2])))
 
+#Create new data
 # Edition -- [date_workshop] --> Date
 graph.add((lab2.Edition, lab2.date_workshop, XSD.date))
 for i in range(len(workshopsEditionsData)):
@@ -206,19 +210,19 @@ for i in range(len(workshopsEditionsData)):
 graph.add((lab2.Edition, lab2.city_workshop, XSD.string))
 for i in range(len(workshopsData)):
     row = workshopsData.iloc[i]
-    graph.add((URIRef(lab2 + "Edition"+str(row.iloc[0])), lab2.city_workshop, Literal(row.iloc[3])))
+    graph.add((URIRef(lab2 + "Edition"+str(row.iloc[1])), lab2.city_workshop, Literal(row.iloc[3])))
 
 # Edition -- [workshop] --> String
 graph.add((lab2.Edition, lab2.workshop, XSD.string))
 for i in range(len(workshopsData)):
     row = workshopsData.iloc[i]
-    graph.add((URIRef(lab2 + "Edition"+str(row.iloc[0])), lab2.workshop, Literal(row.iloc[1])))
+    graph.add((URIRef(lab2 + "Edition"+str(row.iloc[1])), lab2.workshop, Literal(row.iloc[2])))
 
 # Edition -- [conference] --> String
 graph.add((lab2.Edition, lab2.conference, XSD.string))
 for i in range(len(conferencesData)):
     row = conferencesData.iloc[i]
-    graph.add((URIRef(lab2 + "Edition"+str(row.iloc[0])), lab2.conference, Literal(row.iloc[1])))
+    graph.add((URIRef(lab2 + "Edition"+str(row.iloc[1])), lab2.conference, Literal(row.iloc[2])))
 
 # Keyword
 # Keyword -- [name_keyword] --> string

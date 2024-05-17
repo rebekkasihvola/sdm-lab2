@@ -1,0 +1,56 @@
+#### -------------- Query 1 -------------- ####
+
+# Find all Authors
+# Assuming we want to return both authors' ids and names
+
+PREFIX lab2: <http://sdmlab2.org>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?author ?name
+WHERE {
+  ?author rdf:type lab2:Author .
+  ?author lab2:name_author ?name .
+}
+
+#### -------------- Query 2 -------------- ####
+
+# Find all properties whose domain is Author
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lab2: <http://sdmlab2.org>
+SELECT ?property
+
+WHERE
+    {
+    ?property rdf:type rdf:Property .
+    ?property rdfs:domain lab2:Author .
+    }
+
+#### -------------- Query 3 -------------- ####
+
+# Find all properties whose domain is either Conference or Journal
+SELECT ?properties
+WHERE
+    {
+    lab2:Paper lab2:published_conference ?all_conferences .
+    lab2:published_conference rdfs:range ?all_conferences .
+    lab2:published_conference rdfs:domain lab2:Paper .
+    ?properties rdfs:domain ?all_conferences .
+    }
+    UNION
+    {
+    lab2:Paper lab2:published_volume ?all_volumes .
+    lab2:published_volume rdfs:domain lab2:Paper .
+    lab2:published_volume rdfs:range ?all_volumes .
+    ?all_volumes lab2:journal ?all_journals .
+    lab2:journal rdfs:domain ?all_volumes .
+    lab2:journal rdfs:range ?all_journals .
+    ?properties rdfs:domain ?all_journals .
+    }
+
+#### -------------- Query 4 -------------- ####
+
+# Find all the papers written by Di Liu that where published in database conferences
+# Assuming our author's name is Di Liu

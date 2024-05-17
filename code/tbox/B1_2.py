@@ -172,17 +172,18 @@ graph.add((lab2.workshop, RDFS.label, Literal("workshop")))
 
 #Edges
 
-#corresponding_author
-graph.add((lab2.corresponding_author, RDF.type, RDF.Property))
-graph.add((lab2.corresponding_author, RDFS.domain, lab2.Author))
-graph.add((lab2.corresponding_author, RDFS.range, lab2.Paper))
-graph.add((lab2.corresponding_author, RDFS.label, Literal("corresponding_author")))
 
 #author
 graph.add((lab2.author, RDF.type, RDF.Property))
-graph.add((lab2.author, RDFS.subPropertyOf, lab2.corresponding_author))
+graph.add((lab2.author, RDFS.domain, lab2.Author))
 graph.add((lab2.author, RDFS.range, lab2.Paper))
 graph.add((lab2.author, RDFS.label, Literal("author")))
+
+#corresponding_author
+graph.add((lab2.corresponding_author, RDF.type, RDF.Property))
+graph.add((lab2.corresponding_author, RDFS.subPropertyOf, lab2.author))
+graph.add((lab2.corresponding_author, RDFS.range, lab2.Paper))
+graph.add((lab2.corresponding_author, RDFS.label, Literal("corresponding_author")))
 
 
 #keyword

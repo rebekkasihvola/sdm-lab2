@@ -13,11 +13,6 @@ lab2:applied_to a rdf:Property ;
     rdfs:domain lab2:Review ;
     rdfs:range lab2:Paper .
 
-lab2:author a rdf:Property ;
-    rdfs:label "author" ;
-    rdfs:range lab2:Paper ;
-    rdfs:subPropertyOf lab2:corresponding_author .
-
 lab2:cites a rdf:Property ;
     rdfs:label "cites" ;
     rdfs:domain lab2:Paper ;
@@ -47,6 +42,11 @@ lab2:content a rdf:Property ;
     rdfs:label "content" ;
     rdfs:domain lab2:Review ;
     rdfs:range xsd:string .
+
+lab2:corresponding_author a rdf:Property ;
+    rdfs:label "corresponding_author" ;
+    rdfs:range lab2:Paper ;
+    rdfs:subPropertyOf lab2:author .
 
 lab2:created_by a rdf:Property ;
     rdfs:label "created_by" ;
@@ -143,8 +143,8 @@ lab2:year a rdf:Property ;
     rdfs:domain lab2:Paper ;
     rdfs:range xsd:int .
 
-lab2:corresponding_author a rdf:Property ;
-    rdfs:label "corresponding_author" ;
+lab2:author a rdf:Property ;
+    rdfs:label "author" ;
     rdfs:domain lab2:Author ;
     rdfs:range lab2:Paper .
 
