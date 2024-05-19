@@ -106,7 +106,7 @@ for i in range(len(reviewsData)):
 graph.add((lab2.Review, lab2.applied_to, lab2.Paper))
 for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
-    graph.add((URIRef(lab2 + "Review"+str(row.iloc[0])), lab2.applied_to, URIRef(lab2 + "Review"+str(row.iloc[2]))))
+    graph.add((URIRef(lab2 + "Review"+str(row.iloc[0])), lab2.applied_to, URIRef(lab2 + "Paper"+str(row.iloc[2]))))
 
 # Review -- [created_by] --> Author
 graph.add((lab2.Review, lab2.created_by, lab2.Author))
