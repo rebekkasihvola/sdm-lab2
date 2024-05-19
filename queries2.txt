@@ -31,26 +31,44 @@ WHERE
 #### -------------- Query 3 -------------- ####
 
 # Find all properties whose domain is either Conference or Journal
-SELECT ?properties
-WHERE
-    {
-    lab2:Paper lab2:published_conference ?all_conferences .
-    lab2:published_conference rdfs:range ?all_conferences .
-    lab2:published_conference rdfs:domain lab2:Paper .
-    ?properties rdfs:domain ?all_conferences .
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lab2: <http://sdmlab2.org>
+
+SELECT DISTINCT ?property
+WHERE {
+  {
+    ?property rdfs:domain lab2:Edition .
+    FILTER NOT EXISTS {
+      ?property rdfs:label ?propertyName .
+      FILTER (CONTAINS(UCASE(?propertyName), "WORKSHOP"))
     }
-    UNION
-    {
-    lab2:Paper lab2:published_volume ?all_volumes .
-    lab2:published_volume rdfs:domain lab2:Paper .
-    lab2:published_volume rdfs:range ?all_volumes .
-    ?all_volumes lab2:journal ?all_journals .
-    lab2:journal rdfs:domain ?all_volumes .
-    lab2:journal rdfs:range ?all_journals .
-    ?properties rdfs:domain ?all_journals .
-    }
+  }
+  UNION
+  {
+    ?property rdfs:domain lab2:Journal
+  }
+}
+
 
 #### -------------- Query 4 -------------- ####
 
-# Find all the papers written by Di Liu that where published in database conferences
+# Find all the papers written by Di Diu that where published in database conferences
 # Assuming our author's name is Di Liu
+# Keyword name will be changed to Database
+SELECT (?pTitle as ?paper_title) (?confName as ?conferenceName)
+WHERE
+{
+    ?paper      rdf:type        lab2:Paper ;
+                lab2:title  ?pTitle;
+    			lab2:published_conference ?conference;
+    			lab2:keyword ?keyword.
+    
+    ?keyword	rdf:type		lab2:Keyword;
+    			lab2:name_keyword	"database".
+    
+    ?author     rdf:type        lab2:Author ;
+    			lab2:name_author "Di Liu";
+                lab2:author      ?paper .
+    
+    ?conference  lab2:conference ?confName .
+}
