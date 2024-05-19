@@ -54,7 +54,6 @@ WHERE {
 
 # Find all the papers written by Di Diu that where published in database conferences
 # Assuming our author's name is Di Liu
-# Keyword name will be changed to Database
 SELECT (?pTitle as ?paper_title) (?confName as ?conferenceName)
 WHERE
 {
