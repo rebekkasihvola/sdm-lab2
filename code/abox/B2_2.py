@@ -29,7 +29,7 @@ companies_authorsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/da
 universities_authorsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/universities_authors.csv')
 universitiesData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/universities.csv')
 companiesData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/companies.csv')
-reviewsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/reviews_papers.csv')
+reviewsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/modified_reviews_papers2.csv')
 citationsData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/citations.csv')
 keywordData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/keywords.csv')
 keywordPaperData = pd.read_csv('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/keywords_papers.csv')
@@ -114,6 +114,7 @@ for i in range(len(reviewsData)):
     row = reviewsData.iloc[i]
     graph.add((URIRef(lab2 + "Review"+str(row.iloc[0])), lab2.created_by, URIRef(lab2 +"Author"+ str(row.iloc[1]))))
 
+
 # Paper properties
 # Paper -- [title] --> String
 graph.add((lab2.Paper, lab2.title, XSD.string))
@@ -145,14 +146,13 @@ for i in range(len(volumesPapersData)):
     row = volumesPapersData.iloc[i]
     graph.add((URIRef(lab2 + "Paper"+str(row.iloc[1])), lab2.published_volume, URIRef(lab2 +"Volume"+ str(row.iloc[0]))))
 
-#CHANGE THE DATA HERE
 # Paper --[published_conference] --> Edition
 graph.add((lab2.Paper, lab2.published_conference, lab2.Edition))
 for i in range(len(conferencesEditionsPapersData)):
     row = conferencesEditionsPapersData.iloc[i]
     graph.add((URIRef(lab2 + "Paper"+str(row.iloc[1])), lab2.published_conference, URIRef(lab2+"Edition" + row.iloc[0])))
 
-#CHANGE THE DATA HERE
+
 # Paper --[published_workshop] --> Edition
 graph.add((lab2.Paper, lab2.published_workshop, lab2.Edition))
 for i in range(len(workshopsEditionsPapersData)):
