@@ -7,16 +7,16 @@ def remove_decimal_from_author(match):
     integer_value = str(int(original_value))  # Convert to int and back to string to remove any '.0'
     return f'lab2:Author{integer_value}'
 
-# Read the TTL file
-with open('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/abox2.ttl', 'r') as file:
+# Read the TTL file with UTF-8 encoding
+with open('C:\\Users\\Dima\\SDM_submission\\sdm-lab2\\code\\abox\\abox.ttl', 'r', encoding='utf-8') as file:
     ttl_content = file.read()
 
 # Use a regular expression to find and replace the author values with '.0'
 # This regex captures floating point numbers after 'lab2:Author'
 updated_ttl_content = re.sub(r'lab2:Author(\d+)\.0', remove_decimal_from_author, ttl_content)
 
-# Write the updated content back to the TTL file
-with open('/Users/rebekkasihvola/sdm-lab-2/sdm-lab2/data/abox2_updated.ttl', 'w') as file:
+# Write the updated content back to the TTL file with UTF-8 encoding
+with open('C:\\Users\\Dima\\SDM_submission\\sdm-lab2\\code\\abox\\abox_nozeros.ttl', 'w', encoding='utf-8') as file:
     file.write(updated_ttl_content)
 
-print("Updated TTL file saved as 'abox2_updated.ttl'")
+print("Updated TTL file saved as 'abox_nozeros.ttl'")
