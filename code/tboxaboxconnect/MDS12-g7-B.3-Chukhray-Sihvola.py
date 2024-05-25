@@ -13,7 +13,5 @@ aboxpath = "C:\\Users\\Dima\\SDM_submission\\sdm-lab2\\code\\abox\\abox_nozeros.
 graph.parse(tboxpath, format = 'ttl')
 graph.parse(aboxpath, format = 'ttl')
 
-print(len(graph))
-
 file_path = "tbox_plus_abox.ttl"
 graph.serialize(destination=file_path, format="ttl")

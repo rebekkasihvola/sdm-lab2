@@ -8,42 +8,22 @@ graph.bind('lab2', lab2)
 
 #9 Classes
 
-#University
-# """ graph.add((lab2.University, RDF.type, RDFS.Class)) """
 graph.add((lab2.University, RDFS.label, Literal("University")))
 
-#Company
-# """ graph.add((lab2.Company, RDF.type, RDFS.Class)) """
 graph.add((lab2.Company, RDFS.label, Literal("Company")))
 
-#Journal
-# """ graph.add((lab2.Journal, RDF.type, RDFS.Class)) """
 graph.add((lab2.Journal, RDFS.label, Literal("Journal")))
 
-#Volume
-# """ graph.add((lab2.Volume, RDF.type, RDFS.Class)) """
 graph.add((lab2.Volume, RDFS.label, Literal("Volume")))
 
-
-#Paper
-# """ graph.add((lab2.Paper, RDF.type, RDFS.Class)) """
 graph.add((lab2.Paper, RDFS.label, Literal("Paper")))
 
-
-#Author
-# """ graph.add((lab2.Author, RDF.type, RDFS.Class)) """
 graph.add((lab2.Author, RDFS.label, Literal("Author")))
 
-#Edition
-# """ graph.add((lab2.Edition, RDF.type, RDFS.Class)) """
 graph.add((lab2.Edition, RDFS.label, Literal("Edition")))
 
-#Review
-# """ graph.add((lab2.Review, RDF.type, RDFS.Class)) """
 graph.add((lab2.Review, RDFS.label, Literal("Review")))
 
-#Keyword
-# """ graph.add((lab2.Keyword, RDF.type, RDFS.Class)) """
 graph.add((lab2.Keyword, RDFS.label, Literal("Keyword")))
 
 #Properties
